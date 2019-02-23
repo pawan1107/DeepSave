@@ -24,7 +24,8 @@ class LoginScreen extends React.Component {
     }).then(res => {
       console.log(res["data"])
       if(res["data"]["message"] == "success") {
-        this.props.navigation.navigate('Register')
+        alert("Login Successfully");
+        this.props.navigation.navigate('Register');
       }
       else {
         alert("Wrong Username Or Password")

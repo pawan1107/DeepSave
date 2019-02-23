@@ -18,6 +18,7 @@ export default class RegisterScreen extends React.Component {
     }).then(res => {
       console.log(res["data"]["message"])
       if(res["data"]["message"] == "User Created Successfully") {
+        alert("Register Successfully");
       this.props.navigation.navigate('Analysis');
       }
       else {
