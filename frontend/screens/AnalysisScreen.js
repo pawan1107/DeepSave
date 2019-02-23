@@ -1,23 +1,16 @@
 import React from 'react';
-import {Image,Platform, Picker,ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
+import {Image, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 
-export default class RegisterScreen extends React.Component {
-  constructor(props) {
-   super(props);
-   this.state = {
-   }
-}
+export default class AnalysisScreen extends React.Component {
   handlPress = () =>{
     Alert.alert(
          'You need to...'
       );
   };
-
   static navigationOptions =  {
   header: null,
   };
-
   render() {
     return (
             <View style = {styles.maincontainer}>
@@ -28,7 +21,7 @@ export default class RegisterScreen extends React.Component {
              </View>
              <View>
               <View style = {styles.boxview}>
-              <Text style = {styles.textview}>DEEP SAVE</Text>
+              <Text style = {styles.textview}>Analysis</Text>
               </View>
 
               </View>
@@ -68,14 +61,11 @@ export default class RegisterScreen extends React.Component {
                    <View style = {styles.boxview}>
                     <Text style = {styles.txt1}>Designation</Text>
                    </View>
-                   <Picker style = {styles.input}
-                      selectedValue={this.state.selectedValue}
-                      onValueChange={(itemValue, itemIndex) =>
-                        this.setState({selectedValue: itemValue})
-                      }>
-                      <Picker.Item label="Parent" value="Parent" />
-                      <Picker.Item label="Psychiatrist" value="Psychiatrist" />
-                    </Picker>
+                     <TextInput style = {styles.input}
+                      underlineColorAndroid = "transparent"
+                      placeholderTextColor = "#9a73ef"
+                      autoCapitalize = "none"
+                      onChangeText = {this.handlePassword}/>
                     </View>
                   <View>
                   <View style = {styles.btncontainer}>
@@ -94,10 +84,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: '20%',
-
-  },
-  pickerinput:{
-  width: 100,
 
   },
   input:{
