@@ -1,24 +1,52 @@
 import React from 'react';
+import axios from 'axios';
 import {Image,Platform, Picker,ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 
 export default class RegisterScreen extends React.Component {
   constructor(props) {
    super(props);
-   this.state = {
+   this.state = { username: '', password: '', email:'',designation:'',};
+   this.handlePress = this.handlePress.bind(this);
+   this.handleEmail = this.handleEmail.bind(this);
+   this.handleUsername = this.handleUsername.bind(this);
+   this.handlePassword = this.handlePassword.bind(this);
    }
-}
-  handlPress = () =>{
-    Alert.alert(
-         'You need to...'
-      );
+  handlePress() {
+    axios.post("http://10.0.8.215:3000/api/auth/register", {
+      username: this.state.username, password: this.state.password
+    }).then(res => {
+      console.log(res["data"]["message"])
+      if(res["data"]["message"] == "User Created Successfully") {
+        alert("Register Successfully");
+      this.props.navigation.navigate('Analysis');
+      }
+      else {
+        alert("Please Enter all the Details");
+      }
+    }).catch(function (error) {
+        console.log(error);
+      })
   };
+
+  handleUsername(text) {
+    this.setState({username: text});
+  }
+  handleEmail(text) {
+    this.setState({email: text});
+  }
+
+  handlePassword(text) {
+    this.setState({password: text});
+  }
+
 
   static navigationOptions =  {
   header: null,
   };
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
             <View style = {styles.maincontainer}>
             <View >
@@ -40,7 +68,7 @@ export default class RegisterScreen extends React.Component {
                underlineColorAndroid = "transparent"
                placeholderTextColor = "#9a73ef"
                autoCapitalize = "none"
-               onChangeText = {this.handleEmail}/>
+               onChangeText = {this.handleUsername}/>
                </View>
 
                <View style = {{width:"90%",marginTop:10,}}>
@@ -51,7 +79,7 @@ export default class RegisterScreen extends React.Component {
                     underlineColorAndroid = "transparent"
                     placeholderTextColor = "#9a73ef"
                     autoCapitalize = "none"
-                    onChangeText = {this.handlePassword}/>
+                    onChangeText = {this.handleEmail}/>
                   </View>
 
                 <View style = {{width:"90%",marginTop:10,}}>
@@ -71,7 +99,7 @@ export default class RegisterScreen extends React.Component {
                    <Picker style = {styles.input}
                       selectedValue={this.state.selectedValue}
                       onValueChange={(itemValue, itemIndex) =>
-                        this.setState({selectedValue: itemValue})
+                        this.setState({designation: itemValue})
                       }>
                       <Picker.Item label="Parent" value="Parent" />
                       <Picker.Item label="Psychiatrist" value="Psychiatrist" />
@@ -79,7 +107,7 @@ export default class RegisterScreen extends React.Component {
                     </View>
                   <View>
                   <View style = {styles.btncontainer}>
-                    <TouchableOpacity  onPress={this.handlPress}>
+                    <TouchableOpacity  onPress={this.handlePress}>
                         <Text style={styles.button1}>Register</Text>
                     </TouchableOpacity>
                   </View>
@@ -102,6 +130,7 @@ const styles = StyleSheet.create({
   },
   input:{
     // width:  ,
+    paddingLeft: 6,
     height: 45,
     borderRadius: 15,
     borderWidth: 0.5,

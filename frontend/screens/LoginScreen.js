@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Image,Platform, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 
-class LinksScreen extends React.Component {
+class LoginScreen extends React.Component {
 
   constructor(props) {
     super(props);
@@ -18,7 +18,6 @@ class LinksScreen extends React.Component {
       username: this.state.username, password: this.state.password
     }).then(res => {
       if(res["data"]["message"] == "success") {
-        console.log("here")
         this.props.navigation.navigate('AnalysisScreen')
       }
       else {
@@ -103,6 +102,7 @@ const styles = StyleSheet.create({
   },
   input:{
     // width:  ,
+    paddingLeft: 6,
     height: 45,
     borderRadius: 15,
     borderWidth: 0.5,
@@ -170,4 +170,4 @@ textview:{
  }
 });
 
-export default LinksScreen;
+export default LoginScreen;
