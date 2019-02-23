@@ -10,14 +10,13 @@ import AnalysisScreen from '../screens/AnalysisScreen';
 
 const AppNavigation = createStackNavigator(
   {
-    Home: HomeScreen,
-    Login: LinksScreen,
-    Register: RegisterScreen,
-    Analysis: AnalysisScreen,
-
+    Home: { screen: HomeScreen },
+    Login: { screen:LinksScreen },
+    Register: { screen:RegisterScreen },
+    AnalysisScreen: { screen:AnalysisScreen }
   },
   {
-    initialRouteName: "Analysis"
+    initialRouteName: "Login"
   }
 );
 
