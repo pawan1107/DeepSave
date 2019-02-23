@@ -9,7 +9,7 @@ const screenWidth = Dimensions.get('window').width
 export default class AnalysisScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { twitter_id: '', data: [0], showGraph: false };
+    this.state = { twitter_id: '', data: [[0],[]], showGraph: false };
     this.handlePress = this.handlePress.bind(this);
     this.handleId = this.handleId.bind(this);
   }
@@ -24,6 +24,7 @@ export default class AnalysisScreen extends React.Component {
       console.log(JSON.stringify(res))
       if(res["data"]["message"] == "success") {
         this.setState({data: res["data"]["data"], showGraph: true})
+        console.log(this.state.data)
       }
       else {
         alert("Twitter Id Not Found")
@@ -68,9 +69,9 @@ export default class AnalysisScreen extends React.Component {
 
                 <LineChart
              data={{
-               labels: [],
+               labels: this.state.data[1],
                datasets: [{
-                 data: this.state.data
+                 data: this.state.data[0]
                }]
              }}
              width={Dimensions.get('window').width * 0.95 }
