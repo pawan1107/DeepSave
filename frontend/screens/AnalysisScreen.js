@@ -88,10 +88,11 @@ export default class AnalysisScreen extends React.Component {
              }}
              bezier
              style={{
-               marginVertical: 8,
-               borderRadius: 16
+               marginVertical: 8, 
+               borderRadius: 16,
              }}
            />
+           <View><Text style={{margin: 8,}}>{"\n"}</Text></View>
             </ScrollView>
            </View>
       </View>
