@@ -1,57 +1,42 @@
 import React from 'react';
-import axios from 'axios';
 import {Image,Platform, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 
-export default class LinksScreen extends React.Component {
-
-  constructor(props: Props) {
-    super(props);
-    console.log(this.props)
-    // this.state = { username: '', password: '' };
-  }
-  
+export default class RegisterScreen extends React.Component {
   handlPress = () =>{
-    
-    axios.post("http://localhost:3000/api/auth/login", { 
-      username: this.state.username, password: this.state.password 
-    }).then((res) => {
-      if(res.message == "success") {
-        navigate('Home')
-      }
-    })
+    Alert.alert(
+         'You need to...'
+      );
   };
 
   render() {
     return (
             <View style = {styles.maincontainer}>
-
             <View >
              <View style = {styles.logoview}>
                <Image style={styles.logo} source = {require("../assets/images/logo-main.png")} />
              </View>
              </View>
              <View>
-                <View style = {styles.boxview}>
-                <Text style = {styles.textview}>DEEP SAVE</Text>
+              <View style = {styles.boxview}>
+              <Text style = {styles.textview}>DEEP SAVE</Text>
               </View>
 
               </View>
-              <View style = {{width:"90%"}}>
+              <View style = {{width:"90%",marginTop:10,}}>
               <View style = {styles.boxview}>
               <Text style = {styles.txt1}>Username</Text>
-              <Text style = {styles.txt1}>{this.state}</Text>
               </View>
               <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
                placeholderTextColor = "#9a73ef"
                autoCapitalize = "none"
                onChangeText = {this.handleEmail}/>
-
                </View>
-               <View style = {{width:"90%"}}>
+
+               <View style = {{width:"90%",marginTop:10,}}>
                  <View style = {styles.boxview}>
-                  <Text style = {styles.txt1}>Password</Text>
+                  <Text style = {styles.txt1}>Email</Text>
                  </View>
                    <TextInput style = {styles.input}
                     underlineColorAndroid = "transparent"
@@ -59,15 +44,28 @@ export default class LinksScreen extends React.Component {
                     autoCapitalize = "none"
                     onChangeText = {this.handlePassword}/>
                   </View>
-                <View>
-                  <View style = {styles.btncontainer}>
-                    <TouchableOpacity  onPress={this.handlPress}>
-                        <Text style={styles.button1}>Login</Text>
-                    </TouchableOpacity>
+
+                <View style = {{width:"90%",marginTop:10,}}>
+                  <View style = {styles.boxview}>
+                   <Text style = {styles.txt1}>Password</Text>
                   </View>
-                </View>
-                <Text style={styles.txt2}>or</Text>
-                <View>
+                    <TextInput style = {styles.input}
+                     underlineColorAndroid = "transparent"
+                     placeholderTextColor = "#9a73ef"
+                     autoCapitalize = "none"
+                     onChangeText = {this.handlePassword}/>
+                   </View>
+                 <View style = {{width:"90%",marginTop:10,}}>
+                   <View style = {styles.boxview}>
+                    <Text style = {styles.txt1}>Designation</Text>
+                   </View>
+                     <TextInput style = {styles.input}
+                      underlineColorAndroid = "transparent"
+                      placeholderTextColor = "#9a73ef"
+                      autoCapitalize = "none"
+                      onChangeText = {this.handlePassword}/>
+                    </View>
+                  <View>
                   <View style = {styles.btncontainer}>
                     <TouchableOpacity  onPress={this.handlPress}>
                         <Text style={styles.button1}>Register</Text>
@@ -124,14 +122,15 @@ btncontainer:{
     },
   txt1:{
   // position: "absolute",
-  width: 73,
+  width: 100,
   height: 28,
   // font-family: Martel Sans;
   fontStyle: "normal",
   fontWeight: "normal",
   // lineHeight: "normal",
   fontSize: 15,
-  textAlign: "center",
+  marginLeft:10,
+  textAlign: "left",
   color: "#0E33BD",
   },
 textview:{
