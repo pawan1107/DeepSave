@@ -12,10 +12,14 @@ class LinksScreen extends React.Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
   }
-  
+
+    static navigationOptions =  {
+    header: null,
+    };
+
   handlePress() {
     console.log("Hello");
-    axios.post("http://10.0.8.215:3000/api/auth/login", { 
+    axios.post("http://10.0.8.215:3000/api/auth/login", {
       username: this.state.username, password: this.state.password
     }).then(res => {
       console.log(res["data"])
@@ -98,7 +102,8 @@ class LinksScreen extends React.Component {
 const styles = StyleSheet.create({
   maincontainer:{
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: '20%',
 
   },
   input:{
