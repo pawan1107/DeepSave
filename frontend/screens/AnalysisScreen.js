@@ -13,6 +13,9 @@ export default class AnalysisScreen extends React.Component {
     this.handlePress = this.handlePress.bind(this);
     this.handleId = this.handleId.bind(this);
   }
+    static navigationOptions =  {
+    header: null,
+    }; 
 
   handlePress() {
     axios.post("http://10.0.8.215:3000/api/dashboard/twitter", {

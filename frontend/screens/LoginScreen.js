@@ -15,7 +15,6 @@ class LoginScreen extends React.Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
   }
-
     static navigationOptions =  {
     header: null,
     };
@@ -64,6 +63,7 @@ class LoginScreen extends React.Component {
               </View>
 
               </View>
+              <KeyboardAvoidingView style={styles.container} behavior="padding" enabled> 
               <View style = {{width:"90%"}}>
               <View style = {styles.boxview}>
               <Text style = {styles.txt1}>Username</Text>
