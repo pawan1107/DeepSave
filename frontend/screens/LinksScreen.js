@@ -28,7 +28,18 @@ export default class LinksScreen extends React.Component {
 
 const styles = StyleSheet.create({
   txt1:{
-    
+  position: "absolute",
+  width: 73,
+  height: 28,
+  left: 18,
+  top: 30,
+  // font-family: Martel Sans;
+  fontStyle: "normal",
+  fontWeight: "normal",
+  // lineHeight: "normal",
+  fontSize: 15,
+  textAlign: "center",
+  color: "#0E33BD",
   },
 textview:{
   // fontFamily:"MedusaGothic",
