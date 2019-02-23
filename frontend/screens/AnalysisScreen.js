@@ -1,19 +1,39 @@
 import React from 'react';
 import {Image, ScrollView,StyleSheet,Text,Dimensions,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
+import axios from 'axios';
 import { LineChart } from 'react-native-chart-kit'
 
 const screenWidth = Dimensions.get('window').width
 
 export default class AnalysisScreen extends React.Component {
-  handlPress = () =>{
-    Alert.alert(
-         'You need to...'
-      );
-  };
-  static navigationOptions =  {
-  header: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = { twitter_id: '', data: [0], showGraph: false };
+    this.handlePress = this.handlePress.bind(this);
+    this.handleId = this.handleId.bind(this);
+  }
+
+  handlePress() {
+    axios.post("http://10.0.8.215:3000/api/dashboard/twitter", {
+      twitter_id: this.state.twitter_id
+    }).then(res => {
+      console.log(JSON.stringify(res))
+      if(res["data"]["message"] == "success") {
+        this.setState({data: res["data"]["data"], showGraph: true})
+      }
+      else {
+        alert("Twitter Id Not Found")
+      }
+    }).catch(function (error) {
+      console.log(error);
+    })
+  }
+
+  handleId(text) {
+    this.setState({twitter_id: text, showGraph: false})
+  }
+
   render() {
     return (
             <View>
@@ -30,14 +50,14 @@ export default class AnalysisScreen extends React.Component {
               <View style = {styles.boxview}>
               <Text style = {styles.txt1}>Twitter Id</Text>
               </View>
-              <TextInput style = {styles.input}
+              <TextInput style={styles.input}
                underlineColorAndroid = "transparent"
                autoCapitalize = "none"
-               onChangeText = {this.handleid}/>
+               onChangeText = {this.handleId}/>
                </View>
                   <View>
                   <View style = {styles.btncontainer}>
-                    <TouchableOpacity  onPress={this.handlPress}>
+                    <TouchableOpacity  onPress={this.handlePress}>
                         <Text style={styles.button1}>ANALYSE</Text>
                     </TouchableOpacity>
                   </View>
@@ -45,25 +65,18 @@ export default class AnalysisScreen extends React.Component {
 
                 <LineChart
              data={{
-               labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+               labels: [],
                datasets: [{
-                 data: [
-                   Math.random() * 100,
-                   Math.random() * 100,
-                   Math.random() * 100,
-                   Math.random() * 100,
-                   Math.random() * 100,
-                   Math.random() * 100
-                 ]
+                 data: this.state.data
                }]
              }}
-             width={Dimensions.get('window').width * 0.95 } // from react-native
+             width={Dimensions.get('window').width * 0.95 }
              height={220}
              chartConfig={{
                backgroundColor: '#e26a00',
                backgroundGradientFrom: '#fb8c00',
                backgroundGradientTo: '#ffa726',
-               decimalPlaces: 2, // optional, defaults to 2dp
+               decimalPlaces: 2,
                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                style: {
                  borderRadius: 16
