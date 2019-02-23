@@ -13,7 +13,7 @@ export default class LinksScreen extends React.Component {
     return (
             <View style = {styles.maincontainer}>
 
-            <View>
+            <View >
              <View style = {styles.logoview}>
                <Image style={styles.logo} source = {require("../assets/images/logo-main.png")} />
              </View>
@@ -24,7 +24,7 @@ export default class LinksScreen extends React.Component {
               </View>
 
               </View>
-              <View>
+              <View style = {{width:"90%"}}>
               <View style = {styles.boxview}>
               <Text style = {styles.txt1}>Username</Text>
               </View>
@@ -35,7 +35,7 @@ export default class LinksScreen extends React.Component {
                onChangeText = {this.handleEmail}/>
 
                </View>
-               <View>
+               <View style = {{width:"90%"}}>
                  <View style = {styles.boxview}>
                   <Text style = {styles.txt1}>Password</Text>
                  </View>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 
   },
   input:{
-    width: 375,
+    // width:  ,
     height: 45,
     borderRadius: 15,
     borderWidth: 0.5,
