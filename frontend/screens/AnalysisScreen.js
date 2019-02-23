@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
+import {Image, ScrollView,StyleSheet,Text,Dimensions,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 import { LineChart } from 'react-native-chart-kit'
 
