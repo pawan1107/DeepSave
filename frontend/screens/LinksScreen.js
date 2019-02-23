@@ -1,12 +1,25 @@
 import React from 'react';
+import axios from 'axios';
 import {Image,Platform, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 
 export default class LinksScreen extends React.Component {
+
+  constructor(props: Props) {
+    super(props);
+    console.log(this.props)
+    // this.state = { username: '', password: '' };
+  }
+  
   handlPress = () =>{
-    Alert.alert(
-         'You need to...'
-      );
+    
+    axios.post("http://localhost:3000/api/auth/login", { 
+      username: this.state.username, password: this.state.password 
+    }).then((res) => {
+      if(res.message == "success") {
+        navigate('Home')
+      }
+    })
   };
 
   render() {
@@ -27,6 +40,7 @@ export default class LinksScreen extends React.Component {
               <View style = {{width:"90%"}}>
               <View style = {styles.boxview}>
               <Text style = {styles.txt1}>Username</Text>
+              <Text style = {styles.txt1}>{this.state}</Text>
               </View>
               <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
