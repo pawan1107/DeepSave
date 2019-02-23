@@ -24,9 +24,8 @@ export default class HomeScreen extends React.Component {
 
 
   render() {
-
+    const {navigate} = this.props.navigation;
     return (
-
         <View>
          <View style = {styles.logoview}>
            <Image style={styles.logo} source = {require("../assets/images/logo-main.png")} />
@@ -37,7 +36,7 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <View style = {styles.btncontainer}>
-            <TouchableOpacity  onPress={this.handlPress}>
+            <TouchableOpacity  onPress={() => navigate('Login')}>
                 <Text style={styles.button1}>Get Started</Text>
             </TouchableOpacity>
           </View>
