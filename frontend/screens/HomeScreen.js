@@ -1,32 +1,30 @@
 import React from 'react';
 import { Font } from 'expo';
 
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Button,
-   TouchableNativeFeedback,
-} from 'react-native';
+import {Image,Platform, ScrollView,StyleSheet,Text,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
+  handlPress = () =>{
+    Alert.alert(
+         'You need to...'
+      );
+  };
   componentDidMount() {
     // Font.loadAsync({
     //   MedusaGothic: require('../assets/fonts/MedusaGothic.otf'),
     // });
+
   }
   static navigationOptions = {
     header: null,
   };
 
+
   render() {
+
     return (
 
         <View>
@@ -38,17 +36,14 @@ export default class HomeScreen extends React.Component {
           <Text style = {{ ...styles.textview, color: '#23CFA5'}} >SAVE</Text>
           </View>
 
-          <View style = {styles.btncontainer} >
-            <TouchableOpacity onPress={this.handlPress}>
+          <View style = {styles.btncontainer}>
+            <TouchableOpacity  onPress={this.handlPress}>
                 <Text style={styles.button1}>Get Started</Text>
             </TouchableOpacity>
           </View>
        </View>
     );
   }
-handlePress(){
-alert("heelo")
-}
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
       const learnMoreButton = (
@@ -84,6 +79,9 @@ alert("heelo")
 }
 const styles = StyleSheet.create({
   btncontainer:{
+
+    flexDirection: 'column',
+      justifyContent: 'center',
     backgroundColor: "#0E33BD",
     // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
     borderRadius: 35,
@@ -107,6 +105,8 @@ const styles = StyleSheet.create({
 
   },
   boxview: {
+      flexDirection: 'column',
+        justifyContent: 'center',
     position: "absolute",
     width: 228,
     height: 200,
@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
   textAlign:"center"
 },
   logoview: {
-   justifyContent: "center",
+      flexDirection: 'column',
+        justifyContent: 'center',
    alignItems: "center"
  },
  logo: {
