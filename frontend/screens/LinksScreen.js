@@ -3,26 +3,43 @@ import axios from 'axios';
 import {Image,Platform, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 
-export default class LinksScreen extends React.Component {
+class LinksScreen extends React.Component {
 
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
-    console.log(this.props)
-    // this.state = { username: '', password: '' };
+    this.state = { username: '', password: '' };
+    this.handlePress = this.handlePress.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
   }
   
-  handlPress = () =>{
-    
-    axios.post("http://localhost:3000/api/auth/login", { 
-      username: this.state.username, password: this.state.password 
-    }).then((res) => {
-      if(res.message == "success") {
-        navigate('Home')
+  handlePress() {
+    console.log("Hello");
+    axios.post("http://10.0.8.215:3000/api/auth/login", { 
+      username: this.state.username, password: this.state.password
+    }).then(res => {
+      console.log(res["data"])
+      if(res["data"]["message"] == "success") {
+        this.props.navigation.navigate('Register')
       }
-    })
+      else {
+        alert("Wrong Username Or Password")
+      }
+    }).catch(function (error) {
+        console.log(error);
+      })
   };
 
+  handleEmail(text) {
+    this.setState({username: text});
+  }
+
+  handlePassword(text) {
+    this.setState({password: text});
+  }
+
   render() {
+    const {navigate} = this.props.navigation;
     return (
             <View style = {styles.maincontainer}>
 
@@ -40,7 +57,6 @@ export default class LinksScreen extends React.Component {
               <View style = {{width:"90%"}}>
               <View style = {styles.boxview}>
               <Text style = {styles.txt1}>Username</Text>
-              <Text style = {styles.txt1}>{this.state}</Text>
               </View>
               <TextInput style = {styles.input}
                underlineColorAndroid = "transparent"
@@ -61,7 +77,7 @@ export default class LinksScreen extends React.Component {
                   </View>
                 <View>
                   <View style = {styles.btncontainer}>
-                    <TouchableOpacity  onPress={this.handlPress}>
+                    <TouchableOpacity  onPress={this.handlePress}>
                         <Text style={styles.button1}>Login</Text>
                     </TouchableOpacity>
                   </View>
@@ -69,7 +85,7 @@ export default class LinksScreen extends React.Component {
                 <Text style={styles.txt2}>or</Text>
                 <View>
                   <View style = {styles.btncontainer}>
-                    <TouchableOpacity  onPress={this.handlPress}>
+                    <TouchableOpacity  onPress={() => {navigate('Register')}}>
                         <Text style={styles.button1}>Register</Text>
                     </TouchableOpacity>
                   </View>
@@ -153,3 +169,5 @@ textview:{
    height: 74,
  }
 });
+
+export default LinksScreen;

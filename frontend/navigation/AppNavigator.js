@@ -8,12 +8,12 @@ import RegisterScreen from '../screens/RegisterScreen';
 
 const AppNavigation = createStackNavigator(
   {
-    Home: HomeScreen,
-    Login: LinksScreen,
-    Register: RegisterScreen,
+    Home: { screen: HomeScreen },
+    Login: { screen:LinksScreen },
+    Register: { screen:RegisterScreen }
   },
   {
-    initialRouteName: "Register"
+    initialRouteName: "Login"
   }
 );
 
