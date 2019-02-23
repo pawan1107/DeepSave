@@ -17,7 +17,7 @@ const AppNavigation = createStackNavigator(
 
   },
   {
-    initialRouteName: "Register"
+    initialRouteName: "Analysis"
   }
 );
 
