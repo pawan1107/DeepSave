@@ -13,17 +13,12 @@ class LinksScreen extends React.Component {
     this.handlePassword = this.handlePassword.bind(this);
   }
 
-    static navigationOptions =  {
-    header: null,
-    };
-
   handlePress() {
-    console.log("Hello");
     axios.post("http://10.0.8.215:3000/api/auth/login", {
       username: this.state.username, password: this.state.password
     }).then(res => {
-      console.log(res["data"])
       if(res["data"]["message"] == "success") {
+        console.log("here")
         this.props.navigation.navigate('AnalysisScreen')
       }
       else {
