@@ -52,7 +52,7 @@ export default class LinksScreen extends React.Component {
                     </TouchableOpacity>
                   </View>
                 </View>
-
+                <Text style={styles.txt2}>or</Text>
                 <View>
                   <View style = {styles.btncontainer}>
                     <TouchableOpacity  onPress={this.handlPress}>
@@ -67,8 +67,8 @@ export default class LinksScreen extends React.Component {
 
 const styles = StyleSheet.create({
   maincontainer:{
-
-alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center'
 
   },
   input:{
@@ -79,27 +79,30 @@ alignItems: "center",
     borderColor: '#23CFA5',
     // mix-blend-mode: normal;
   },
-
-    btncontainer:{
-      flexDirection: 'column',
-      backgroundColor: "#0E33BD",
-      borderRadius: 35,
+txt2:{
+  width: 31,
+  height: 55,
+  fontSize: 30,
+  textAlign: "center",
+  color: "#0E33BD",
+},
+btncontainer:{
+        flexDirection: 'column',
+          justifyContent: 'center',
+        backgroundColor: "#0E33BD",
+        // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        borderRadius: 35,
         margin: 10,
-      width: 309,
-      height: 59,
-      justifyContent: 'center',
-      alignItems: 'center'    ,
-      flexDirection: 'row',
-
-
+        width: 309,
+        height: 59,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    button1:{
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 3,
+    button1 :{
       width: 166,
       fontSize: 30,
       margin: "auto",
+      textAlign: 'center',
       // font-family: Martel Sans;
       fontStyle: "normal",
       fontWeight: "normal",

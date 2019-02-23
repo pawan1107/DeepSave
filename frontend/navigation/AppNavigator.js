@@ -11,7 +11,7 @@ const AppNavigation = createStackNavigator(
     Register: SettingsScreen
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Login"
   }
 );
 
