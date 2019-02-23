@@ -21,6 +21,7 @@ export default class AnalysisScreen extends React.Component {
                 <Text style = {styles.text} >DEEP SAVE</Text>
               </View>
             <View style = {styles.maincontainer}>
+            <ScrollView style = {styles.main}>
             <View style = {styles.midview}>
               <Text style = {{fontSize: 24,letterSpacing: 0.04,}}>Worried about someone?</Text>
               <Text style = {{fontSize: 24,letterSpacing: 0.04,}}>Enter twitter Id for Analysis</Text>
@@ -74,10 +75,7 @@ export default class AnalysisScreen extends React.Component {
                borderRadius: 16
              }}
            />
-
-
-
-
+            </ScrollView>
            </View>
       </View>
     );

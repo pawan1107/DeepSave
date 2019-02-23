@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Image,Platform, Picker,ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
+import {Image,Platform, KeyboardAvoidingView,Picker,ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 
 export default class RegisterScreen extends React.Component {
@@ -53,7 +53,7 @@ export default class RegisterScreen extends React.Component {
              <View style = {styles.logoview}>
                <Image style={styles.logo} source = {require("../assets/images/logo-main.png")} />
              </View>
-             </View>
+             </View> 
              <View>
               <View style = {styles.boxview}>
               <Text style = {styles.textview}>DEEP SAVE</Text>

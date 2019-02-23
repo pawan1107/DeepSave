@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import {Image,Platform, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
+import DismissKeyboard from 'dismissKeyboard';
+
 
 class LoginScreen extends React.Component {
 
@@ -18,6 +21,7 @@ class LoginScreen extends React.Component {
     };
 
   handlePress() {
+
     console.log("Hello");
     axios.post("http://10.0.8.215:3000/api/auth/login", {
       username: this.state.username, password: this.state.password
@@ -25,7 +29,7 @@ class LoginScreen extends React.Component {
       console.log(res["data"])
       if(res["data"]["message"] == "success") {
         alert("Login Successfully");
-        this.props.navigation.navigate('Register');
+        this.props.navigation.navigate('Analysis');
       }
       else {
         alert("Wrong Username Or Password")
@@ -46,6 +50,7 @@ class LoginScreen extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
+
             <View style = {styles.maincontainer}>
 
             <View >
@@ -87,6 +92,7 @@ class LoginScreen extends React.Component {
                     </TouchableOpacity>
                   </View>
                 </View>
+                <KeyboardSpacer/>
                 <Text style={styles.txt2}>or</Text>
                 <View>
                   <View style = {styles.btncontainer}>
@@ -96,6 +102,7 @@ class LoginScreen extends React.Component {
                   </View>
                 </View>
            </View>
+
     );
   }
 }
