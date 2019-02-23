@@ -20,7 +20,7 @@ class LinksScreen extends React.Component {
     }).then(res => {
       console.log(res["data"])
       if(res["data"]["message"] == "success") {
-        this.props.navigation.navigate('Register')
+        this.props.navigation.navigate('AnalysisScreen')
       }
       else {
         alert("Wrong Username Or Password")
