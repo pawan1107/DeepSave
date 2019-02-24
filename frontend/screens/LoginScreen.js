@@ -21,7 +21,7 @@ class LoginScreen extends React.Component {
 
   handlePress() {
     console.log("Hello");
-    axios.post("http://10.0.8.215:3000/api/auth/login", {
+    axios.post("https://thawing-hollows-21538.herokuapp.com/api/auth/login", {
       username: this.state.username, password: this.state.password
     }).then(res => {
       console.log(res["data"])

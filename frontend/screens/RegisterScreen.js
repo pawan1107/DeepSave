@@ -13,7 +13,7 @@ export default class RegisterScreen extends React.Component {
    this.handlePassword = this.handlePassword.bind(this);
    }
   handlePress() {
-    axios.post("http://10.0.8.215:3000/api/auth/register", {
+    axios.post("https://thawing-hollows-21538.herokuapp.com/api/auth/register", {
       username: this.state.username, password: this.state.password
     }).then(res => {
       console.log(res["data"]["message"])

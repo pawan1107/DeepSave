@@ -22,7 +22,7 @@
 
     handlePress() {
       this.setState({isLoading:true,showcontent:false,})
-      axios.post("http://10.0.8.215:3000/api/dashboard/twitter", {
+      axios.post("https://thawing-hollows-21538.herokuapp.com/api/dashboard/twitter", {
         twitter_id: this.state.twitter_id
       }).then(res => {
         console.log(JSON.stringify(res))
