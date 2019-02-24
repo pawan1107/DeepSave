@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import {Image,Platform, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
+
+import {Image,Platform,KeyboardAvoidingView, ScrollView,StyleSheet,Text,TextInput,TouchableOpacity,View,Button,TouchableNativeFeedback, Alert,} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
-import DismissKeyboard from 'dismissKeyboard';
+
 
 
 class LoginScreen extends React.Component {
@@ -20,7 +20,6 @@ class LoginScreen extends React.Component {
     };
 
   handlePress() {
-
     console.log("Hello");
     axios.post("http://10.0.8.215:3000/api/auth/login", {
       username: this.state.username, password: this.state.password
@@ -45,9 +44,10 @@ class LoginScreen extends React.Component {
   handlePassword(text) {
     this.setState({password: text});
   }
-
   render() {
     const {navigate} = this.props.navigation;
+
+    const paddingTop = 110 - this.state.keyboardSpace / 3;
     return (
             <View style = {styles.maincontainer}>
               <View >
@@ -59,18 +59,18 @@ class LoginScreen extends React.Component {
                 <View style = {styles.boxview}>
                   <Text style = {styles.textview}>DEEP SAVE</Text>
                 </View>
-              </View> 
+              </View>
               <View style = {{width:"90%"}}>
                 <View style = {styles.boxview}>
                   <Text style = {styles.txt1}>Username</Text>
                 </View>
-                <TextInput style = {styles.input}
-                 underlineColorAndroid = "transparent"
-                 placeholderTextColor = "#9a73ef"
-                 autoCapitalize = "none"
-                 onChangeText = {this.handleEmail}/>
-
+                  <TextInput style = {styles.input}
+                   underlineColorAndroid = "transparent"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   onChangeText = {this.handleEmail}/>
                </View>
+
                <View style = {{width:"90%"}}>
                  <View style = {styles.boxview}>
                   <Text style = {styles.txt1}>Password</Text>
@@ -82,19 +82,19 @@ class LoginScreen extends React.Component {
                   onChangeText = {this.handlePassword}/>
                 </View>
                 <View>
+                  <TouchableOpacity  onPress={this.handlePress}>
                   <View style = {styles.btncontainer}>
-                    <TouchableOpacity  onPress={this.handlePress}>
                       <Text style={styles.button1}>Login</Text>
-                    </TouchableOpacity>
                   </View>
+                </TouchableOpacity>
                 </View>
                 <Text style={styles.txt2}>or</Text>
                 <View>
-                  <View style = {styles.btncontainer}>
-                    <TouchableOpacity  onPress={() => {navigate('Register')}}>
-                      <Text style={styles.button1}>Register</Text>
-                    </TouchableOpacity>
-                  </View>
+                  <TouchableOpacity  onPress={() => {navigate('Register')}}>
+                    <View style = {styles.btncontainer}>
+                        <Text style={styles.button1}>Register</Text>
+                    </View>
+                  </TouchableOpacity>
                 </View>
            </View>
 

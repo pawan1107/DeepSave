@@ -5,6 +5,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import AnalysisScreen from '../screens/AnalysisScreen';
+import ShowTweetScreen from '../screens/ShowTweetScreen';
 
 
 
@@ -13,10 +14,11 @@ const AppNavigation = createStackNavigator(
     Home: { screen: HomeScreen },
     Login: { screen:LoginScreen },
     Register: { screen:RegisterScreen },
-    Analysis: { screen:AnalysisScreen }
+    Analysis: { screen:AnalysisScreen },
+    ShowTweet: { screen:ShowTweetScreen }
   },
   {
-    initialRouteName: "Login"
+    initialRouteName: "Home"
   }
 );
 

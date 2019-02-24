@@ -27,6 +27,8 @@ export default class HomeScreen extends React.Component {
     const {navigate} = this.props.navigation;
     return (
         <View>
+
+        <View style = {styles.maincontainer}>
          <View style = {styles.logoview}>
            <Image style={styles.logo} source = {require("../assets/images/logo-main.png")} />
          </View>
@@ -35,11 +37,12 @@ export default class HomeScreen extends React.Component {
           <Text style = {{ ...styles.textview, color: '#23CFA5'}} >SAVE</Text>
           </View>
 
-          <View style = {styles.btncontainer}>
-            <TouchableOpacity  onPress={() => navigate('Login')}>
-                <Text style={styles.button1}>Get Started</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity  onPress={() => navigate('Login')}>
+              <View style = {styles.btncontainer}>
+                    <Text style={styles.button1}>Get Started</Text>
+              </View>
+          </TouchableOpacity>
+       </View>
        </View>
     );
   }
@@ -77,40 +80,40 @@ export default class HomeScreen extends React.Component {
   };
 }
 const styles = StyleSheet.create({
-  btncontainer:{
-
-    flexDirection: 'column',
-      justifyContent: 'center',
-    backgroundColor: "#0E33BD",
-    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
-    borderRadius: 35,
-    position: "absolute",
-    width: 309,
-    height: 59,
-    left: 50,
-    top: 578,
-    textAlign: "center",
+  maincontainer:{
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  button1:{
-    width: 166,
-    fontSize: 30,
-    margin: "auto",
-    // font-family: Martel Sans;
-    fontStyle: "normal",
-    fontWeight: "normal",
-    color: "#FFFFFF",
+    marginTop: '20%',
 
   },
+  btncontainer:{
+          flexDirection: 'column',
+            justifyContent: 'center',
+          backgroundColor: "#0E33BD",
+          // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+          borderRadius: 35,
+          margin: 10,
+          marginTop: 20,
+          width: 309,
+          height: 59,
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
+      button1 :{
+        width: 166,
+        fontSize: 30,
+        margin: "auto",
+        textAlign: 'center',
+        // font-family: Martel Sans;
+        fontStyle: "normal",
+        fontWeight: "normal",
+        color: "#FFFFFF",
+      },
   boxview: {
       flexDirection: 'column',
         justifyContent: 'center',
-    position: "absolute",
     width: 228,
     height: 200,
-    left: 88,
-    top: 372,
 
  },
  textview:{
@@ -126,9 +129,7 @@ const styles = StyleSheet.create({
    alignItems: "center"
  },
  logo: {
-   position: "relative",
    width: 274,
    height: 246,
-   top: 72
  }
 });
