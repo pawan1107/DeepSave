@@ -53,7 +53,7 @@ export default class RegisterScreen extends React.Component {
              <View style = {styles.logoview}>
                <Image style={styles.logo} source = {require("../assets/images/logo-main.png")} />
              </View>
-             </View> 
+             </View>
              <View>
               <View style = {styles.boxview}>
               <Text style = {styles.textview}>DEEP SAVE</Text>
@@ -106,11 +106,11 @@ export default class RegisterScreen extends React.Component {
                     </Picker>
                     </View>
                   <View>
-                  <View style = {styles.btncontainer}>
                     <TouchableOpacity  onPress={this.handlePress}>
-                        <Text style={styles.button1}>Register</Text>
+                      <View style = {styles.btncontainer}>
+                            <Text style={styles.button1}>Register</Text>
+                      </View>
                     </TouchableOpacity>
-                  </View>
                 </View>
            </View>
     );
